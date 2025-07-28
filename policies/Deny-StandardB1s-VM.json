@@ -1,0 +1,42 @@
+{
+  "description": "This policy denies the creation of virtual machines with the SKU 'Standard_B1s'",
+  "displayName": "Deny-StandardB1s-VM",
+  "id": "/providers/Microsoft.Management/managementGroups/Sanboxes/providers/Microsoft.Authorization/policyDefinitions/8f06497d-4324-4f7a-9758-45c94598fb0b",
+  "metadata": {
+    "category": "Compute",
+    "createdBy": "99e44ed0-0399-4749-a34d-af3d421dfede",
+    "createdOn": "2025-07-28T08:40:03.9699121Z",
+    "updatedBy": null,
+    "updatedOn": null
+  },
+  "mode": "All",
+  "name": "8f06497d-4324-4f7a-9758-45c94598fb0b",
+  "parameters": {},
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "equals": "Microsoft.Compute/virtualMachines",
+          "field": "type"
+        },
+        {
+          "equals": "Standard_B1s",
+          "field": "Microsoft.Compute/virtualMachines/sku.name"
+        }
+      ]
+    },
+    "then": {
+      "effect": "deny"
+    }
+  },
+  "policyType": "Custom",
+  "systemData": {
+    "createdAt": "2025-07-28T08:40:03.951215+00:00",
+    "createdBy": "elyes.besbes@outlook.com",
+    "createdByType": "User",
+    "lastModifiedAt": "2025-07-28T08:40:03.951215+00:00",
+    "lastModifiedBy": "elyes.besbes@outlook.com",
+    "lastModifiedByType": "User"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}
