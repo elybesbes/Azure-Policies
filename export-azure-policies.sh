@@ -1,7 +1,7 @@
 #!/bin/bash
 
 Github_User="elybesbes"
-Github_Token="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"
+Github_Token="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"
 Repo_Name="Azure-Policies"
 Repo_URL="https://${Github_User}:${Github_Token}@github.com/${Github_User}/${Repo_Name}.git"
 Clone_DIR="$Repo_Name"
@@ -18,7 +18,7 @@ az policy definition list --query "[?policyType=='Custom']" -o json > all_custom
 
 echo "Splitting policies into individual files..."
 jq -c '.[]' all_custom_policies.json | while read -r policy; do
-  name=$(echo "$policy" | jq -r '.name')
+  name=$(echo "$policy" | jq -r '.displayName' | sed 's/[^a-zA-Z0-9_-]/_/g')
   echo "$policy" | jq '.' > "${Policies_DIR}/${name}.json"
 done
 
