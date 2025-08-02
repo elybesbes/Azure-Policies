@@ -11,6 +11,7 @@
       "effect": "audit"
     }
   },
+  
   "parameters": {
     "allowedLocations": {
       "type": "Array",
