@@ -1,0 +1,30 @@
+{
+  "name": "deny-standardb1s-vm",
+  "displayName": "Deny-StandardB1s-VM",
+  "description": "Imported by Jenkins",
+  "mode": "All",
+  "metadata": {
+    "createdBy": "c8bdc79d-4254-49f3-afde-dab989781041",
+    "createdOn": "2025-07-31T08:17:15.7153595Z",
+    "updatedBy": "1cc041e5-8a57-420e-99cf-0baf8e3b7201",
+    "updatedOn": "2025-08-02T15:48:03.4387996Z"
+  },
+  "parameters": {},
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "equals": "Microsoft.Compute/virtualMachines",
+          "field": "type"
+        },
+        {
+          "equals": "Standard_B1s",
+          "field": "Microsoft.Compute/virtualMachines/sku.name"
+        }
+      ]
+    },
+    "then": {
+      "effect": "deny"
+    }
+  }
+}
