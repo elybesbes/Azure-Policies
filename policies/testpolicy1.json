@@ -1,0 +1,38 @@
+{
+  "name": "542cd2b616b242f98f6b6e28",
+  "displayName": "TESTPOLICY1",
+  "description": "",
+  "mode": "All",
+  "metadata": {
+    "category": "",
+    "createdBy": "c8bdc79d-4254-49f3-afde-dab989781041",
+    "createdOn": "2025-10-09T07:52:28.4791012Z",
+    "updatedBy": null,
+    "updatedOn": null
+  },
+  "parameters": {
+    "allowedLocations": {
+      "allowedValues": null,
+      "defaultValue": null,
+      "metadata": {
+        "additionalProperties": null,
+        "assignPermissions": null,
+        "description": "The list of allowed locations for resources.",
+        "displayName": "Allowed locations",
+        "strongType": "location"
+      },
+      "type": "Array"
+    }
+  },
+  "policyRule": {
+    "if": {
+      "not": {
+        "field": "location",
+        "in": "[parameters('allowedLocations')]"
+      }
+    },
+    "then": {
+      "effect": "audit"
+    }
+  }
+}
